@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Highlight } from '../types';
+import type { Highlight } from '../types';
 import { HighlightOverlay } from './HighlightOverlay';
 import { ZoomIn, ZoomOut, RotateCcw, Move } from 'lucide-react';
 

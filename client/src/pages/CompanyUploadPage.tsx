@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Layout } from '../components/Layout';
 import { UploadBox } from '../components/UploadBox';
 import { FileText, Save, CheckCircle, ListPlus, Loader2 } from 'lucide-react';
-import { ContentFile } from '../types';
+import type { ContentFile } from '../types';
 
 export const CompanyUploadPage: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);

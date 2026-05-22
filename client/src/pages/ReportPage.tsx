@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { MatchSummaryCard } from '../components/MatchSummaryCard';
 import { EvidenceCompareCard } from '../components/EvidenceCompareCard';
-import { Report } from '../types';
+import type { Report } from '../types';
 import { ArrowLeft, Edit3, ShieldAlert, Sparkles, Printer } from 'lucide-react';
 
 export const ReportPage: React.FC = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Highlight } from '../types';
+import type { Highlight } from '../types';
 import { Check, Info, Trash2 } from 'lucide-react';
 
 interface HighlightOverlayProps {

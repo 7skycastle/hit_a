@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { PdfImageViewer } from '../components/PdfImageViewer';
 import { ScoreBadge } from '../components/ScoreBadge';
-import { Report, MatchCase, Highlight } from '../types';
+import type { Report, MatchCase, Highlight } from '../types';
 import { Save, Check, RefreshCw, Eye, EyeOff, LayoutGrid, CheckCircle2, ChevronRight, Type, Palette } from 'lucide-react';
 
 export const MatchingReviewPage: React.FC = () => {

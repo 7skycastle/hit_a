@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { MatchSummaryCard } from '../components/MatchSummaryCard';
 import { Layers, FileText, Calendar, Plus, Award, ArrowRight } from 'lucide-react';
-import { Report, ContentFile, ExamFile } from '../types';
+import type { Report, ContentFile, ExamFile } from '../types';
 
 export const DashboardPage: React.FC = () => {
   const [reports, setReports] = useState<any[]>([]);

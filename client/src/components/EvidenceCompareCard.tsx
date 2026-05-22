@@ -1,5 +1,5 @@
 import React from 'react';
-import { MatchCase } from '../types';
+import type { MatchCase } from '../types';
 import { ScoreBadge } from './ScoreBadge';
 import { PdfImageViewer } from './PdfImageViewer';
 import { Sparkles, ArrowRightLeft, ShieldCheck, HelpCircle } from 'lucide-react';
