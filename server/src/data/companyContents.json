@@ -1,0 +1,18 @@
+[
+  {
+    "id": "company-final-1",
+    "title": "2026 국어 파이널 실전 모의고사 1회",
+    "type": "mock_exam",
+    "area": "common",
+    "round": "1회",
+    "publishMonth": "5월",
+    "fileName": "2026_korean_final_01.pdf",
+    "originalPdfPath": "uploads/company/2026_korean_final_01.pdf",
+    "imagePaths": [
+      "/images/sample_company.png",
+      "/images/sample_company_2.png",
+      "/images/sample_company_3.png"
+    ],
+    "createdAt": "2026-05-20T10:00:00.000Z"
+  }
+]

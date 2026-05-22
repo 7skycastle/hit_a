@@ -1,0 +1,15 @@
+[
+  {
+    "id": "exam-2026-6",
+    "title": "2026학년도 6월 평가원 국어",
+    "examDate": "2026-06-04",
+    "fileName": "2026_06_eval_korean.pdf",
+    "originalPdfPath": "uploads/exam/2026_06_eval_korean.pdf",
+    "imagePaths": [
+      "/images/sample_exam.png",
+      "/images/sample_exam_2.png",
+      "/images/sample_exam_3.png"
+    ],
+    "createdAt": "2026-05-21T09:00:00.000Z"
+  }
+]
