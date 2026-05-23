@@ -1,0 +1,21 @@
+# render.yaml - Render.com 자동 배포 설정
+# 이 파일이 있으면 Render 대시보드에서 "Blueprint" 방식으로 한 번에 배포 가능
+
+services:
+  - type: web
+    name: korean-hit-map
+    env: node
+    region: singapore  # 한국에서 가장 가까운 Render 리전
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000  # Render free tier 기본 포트
+    # 업로드/생성 파일 영속성을 위한 디스크 마운트 (유료 플랜에서 활성화 가능)
+    # disk:
+    #   name: uploads
+    #   mountPath: /opt/render/project/src/server/uploads
+    #   sizeGB: 1
