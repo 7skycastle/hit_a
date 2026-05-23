@@ -75,7 +75,7 @@ const startServer = async () => {
     await PdfService.initialize();
     console.log('Mock 이미지 생성 완료 및 정적 폴더 매핑 준비 완료.');
 
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`===============================================`);
       console.log(`  수능 국어 콘텐츠 적중 맵 (Node.js 백엔드)`);
       console.log(`  포트 ${PORT}번에서 성공적으로 구동되었습니다.`);
