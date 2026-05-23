@@ -5,6 +5,7 @@ import { PdfImageViewer } from '../components/PdfImageViewer';
 import { ScoreBadge } from '../components/ScoreBadge';
 import type { Report, MatchCase, Highlight } from '../types';
 import { Save, Check, RefreshCw, Eye, EyeOff, LayoutGrid, CheckCircle2, ChevronRight, Type, Palette } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export const MatchingReviewPage: React.FC = () => {
   const { reportId } = useParams<{ reportId: string }>();
@@ -27,7 +28,7 @@ export const MatchingReviewPage: React.FC = () => {
   const fetchReport = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`http://localhost:5000/api/reports/${reportId}?role=admin`);
+      const res = await fetch(`${API_BASE_URL}/api/reports/${reportId}?role=admin`);
       if (res.ok) {
         const data = await res.json();
         setReport(data);
@@ -108,7 +109,7 @@ export const MatchingReviewPage: React.FC = () => {
 
     try {
       setSuccessMsg(null);
-      const res = await fetch(`http://localhost:5000/api/matches/${activeCase.id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/matches/${activeCase.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
@@ -129,7 +130,7 @@ export const MatchingReviewPage: React.FC = () => {
         setTimeout(() => setSuccessMsg(null), 3000);
         
         // 스코어 재연산을 위해 리포트 정보 다시 불러오기
-        const reportsRes = await fetch(`http://localhost:5000/api/reports/${reportId}?role=admin`);
+        const reportsRes = await fetch(`${API_BASE_URL}/api/reports/${reportId}?role=admin`);
         if (reportsRes.ok) {
           const updatedReport = await reportsRes.json();
           setReport(updatedReport);

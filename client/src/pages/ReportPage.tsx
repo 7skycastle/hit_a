@@ -5,6 +5,7 @@ import { MatchSummaryCard } from '../components/MatchSummaryCard';
 import { EvidenceCompareCard } from '../components/EvidenceCompareCard';
 import type { Report } from '../types';
 import { ArrowLeft, Edit3, ShieldAlert, Sparkles, Printer } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export const ReportPage: React.FC = () => {
   const { reportId } = useParams<{ reportId: string }>();
@@ -16,7 +17,7 @@ export const ReportPage: React.FC = () => {
       try {
         setLoading(true);
         // 소비자(학생, 학부모 등) 기준이므로 기본 role은 user
-        const res = await fetch(`http://localhost:5000/api/reports/${reportId}?role=user`);
+        const res = await fetch(`${API_BASE_URL}/api/reports/${reportId}?role=user`);
         if (res.ok) {
           const data = await res.json();
           setReport(data);

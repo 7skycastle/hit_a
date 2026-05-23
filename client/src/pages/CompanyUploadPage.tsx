@@ -3,6 +3,7 @@ import { Layout } from '../components/Layout';
 import { UploadBox } from '../components/UploadBox';
 import { FileText, Save, CheckCircle, ListPlus, Loader2 } from 'lucide-react';
 import type { ContentFile } from '../types';
+import { API_BASE_URL } from '../config';
 
 export const CompanyUploadPage: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -22,7 +23,7 @@ export const CompanyUploadPage: React.FC = () => {
   // 등록된 회사 콘텐츠 로드
   const fetchContents = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/company');
+      const res = await fetch(`${API_BASE_URL}/api/company`);
       if (res.ok) {
         const data = await res.json();
         setRegisteredContents(data);
@@ -61,7 +62,7 @@ export const CompanyUploadPage: React.FC = () => {
 
       setUploadProgress(45);
 
-      const res = await fetch('http://localhost:5000/api/company/upload', {
+      const res = await fetch(`${API_BASE_URL}/api/company/upload`, {
         method: 'POST',
         body: formData
       });

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { UploadBox } from '../components/UploadBox';
 import { Cpu, AlertTriangle, Play, Loader2, Sparkles } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export const ExamUploadPage: React.FC = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ export const ExamUploadPage: React.FC = () => {
       formData.append('title', title);
       formData.append('examDate', examDate);
 
-      const uploadRes = await fetch('http://localhost:5000/api/exam/upload', {
+      const uploadRes = await fetch(`${API_BASE_URL}/api/exam/upload`, {
         method: 'POST',
         body: formData
       });
@@ -64,7 +65,7 @@ export const ExamUploadPage: React.FC = () => {
       setProgress(85);
       setStepMsg('적중 등급(S-E) 분류 체계 판정 및 실사 1:1 이미지 하이라이트 레이어 병합 중...');
 
-      const analyzeRes = await fetch(`http://localhost:5000/api/exam/${examId}/analyze`, {
+      const analyzeRes = await fetch(`${API_BASE_URL}/api/exam/${examId}/analyze`, {
         method: 'POST'
       });
 

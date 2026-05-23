@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import type { Highlight } from '../types';
 import { HighlightOverlay } from './HighlightOverlay';
 import { ZoomIn, ZoomOut, RotateCcw, Move } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 interface PdfImageViewerProps {
   imageUrl: string;
@@ -38,7 +39,7 @@ export const PdfImageViewer: React.FC<PdfImageViewerProps> = ({
   // 이미지 서버 경로 튜닝
   const fullImageUrl = imageUrl.startsWith('http') 
     ? imageUrl 
-    : `http://localhost:5000${imageUrl}`;
+    : `${API_BASE_URL}${imageUrl}`;
 
   const handleZoomIn = () => setZoom(prev => Math.min(prev + 15, 200));
   const handleZoomOut = () => setZoom(prev => Math.max(prev - 15, 50));

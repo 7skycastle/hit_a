@@ -50,6 +50,20 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: '수능 국어 콘텐츠 적중 맵 백엔드 작동 중' });
 });
 
+// --- 클라이언트 React 정적 빌드 파일 호스팅 ---
+const clientDistPath = path.join(__dirname, '../../client/dist');
+if (fs.existsSync(clientDistPath)) {
+  console.log(`클라이언트 정적 파일 서빙 경로 활성화: ${clientDistPath}`);
+  app.use(express.static(clientDistPath));
+  
+  // SPA의 모든 클라이언트 라우팅 대응을 위해, API가 아닌 모든 경로는 index.html 반환
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+} else {
+  console.log('클라이언트 정적 빌드 폴더가 존재하지 않아 API 모드로만 작동합니다. (로컬 개발 서버 연동 중)');
+}
+
 // 서버 부팅 시 PDF 디렉토리 구성 및 고해상도 Mock 국어 모의고사 SVG 이미지 렌더링 파일 생성
 const startServer = async () => {
   try {

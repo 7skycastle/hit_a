@@ -4,6 +4,7 @@ import { Layout } from '../components/Layout';
 import { MatchSummaryCard } from '../components/MatchSummaryCard';
 import { Layers, FileText, Calendar, Plus, Award, ArrowRight } from 'lucide-react';
 import type { Report, ContentFile, ExamFile } from '../types';
+import { API_BASE_URL } from '../config';
 
 export const DashboardPage: React.FC = () => {
   const [reports, setReports] = useState<any[]>([]);
@@ -18,21 +19,21 @@ export const DashboardPage: React.FC = () => {
         setLoading(true);
         
         // 1. 리포트 리스트 조회
-        const reportsRes = await fetch('http://localhost:5000/api/reports');
+        const reportsRes = await fetch(`${API_BASE_URL}/api/reports`);
         if (reportsRes.ok) {
           const reportsData = await reportsRes.json();
           setReports(reportsData);
         }
 
         // 2. 회사 콘텐츠 개수 조회
-        const companyRes = await fetch('http://localhost:5000/api/company');
+        const companyRes = await fetch(`${API_BASE_URL}/api/company`);
         if (companyRes.ok) {
           const companyData = await companyRes.json();
           setCompanyCount(companyData.length);
         }
 
         // 3. 평가원 시험지 개수 조회
-        const examRes = await fetch('http://localhost:5000/api/exam');
+        const examRes = await fetch(`${API_BASE_URL}/api/exam`);
         if (examRes.ok) {
           const examData = await examRes.json();
           setExamCount(examData.length);
