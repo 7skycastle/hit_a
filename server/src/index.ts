@@ -13,9 +13,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS 설정
+// CORS 설정 (프로덕션에서는 같은 오리진으로 서빙되므로 '*' 허용은 유지)
 app.use(cors({
-  origin: '*', // 프로토타입 환경이므로 모든 오리진 허용
+  origin: '*',
   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -40,7 +40,7 @@ app.use('/images', express.static(generatedImagesPath, {
   }
 }));
 
-// API 라우터 매핑
+// API 라우터 매핑 (정적 파일 서빙보다 먼저 등록하여 우선순위 확보)
 app.use('/api/company', companyRoutes);
 app.use('/api/exam', examRoutes);
 app.use('/api', reportRoutes); // reports & matches 엔드포인트 바인딩
@@ -50,6 +50,7 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: '수능 국어 콘텐츠 적중 맵 백엔드 작동 중' });
 });
 
+<<<<<<< HEAD
 // --- 클라이언트 React 정적 빌드 파일 호스팅 ---
 const clientDistPath = path.join(__dirname, '../../client/dist');
 if (fs.existsSync(clientDistPath)) {
@@ -62,6 +63,24 @@ if (fs.existsSync(clientDistPath)) {
   });
 } else {
   console.log('클라이언트 정적 빌드 폴더가 존재하지 않아 API 모드로만 작동합니다. (로컬 개발 서버 연동 중)');
+=======
+// --- 프로덕션 환경: React 빌드 정적 파일 서빙 ---
+// Render 클라우드 배포 시 Express가 프론트엔드까지 함께 서빙하여 단일 URL로 운용.
+// 로컬 개발 환경(dev 모드)에서는 Vite 개발 서버를 사용하므로 이 블록은 실행되지 않음.
+if (process.env.NODE_ENV === 'production') {
+  // 클라이언트 빌드 결과물 경로: server/dist 기준 ../../client/dist
+  const clientDistPath = path.join(__dirname, '../../client/dist');
+
+  // React 앱의 정적 에셋(JS, CSS, 이미지 등) 서빙
+  app.use(express.static(clientDistPath));
+
+  // SPA 폴백: /api 이외의 모든 요청은 index.html로 전달하여 React Router가 처리
+  app.get('*', (_req, res) => {
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+
+  console.log(`프로덕션 모드: React 빌드 파일을 ${clientDistPath} 에서 서빙합니다.`);
+>>>>>>> e6671f137f7251df0c6728d04d6f040a9bf174b9
 }
 
 // 서버 부팅 시 PDF 디렉토리 구성 및 고해상도 Mock 국어 모의고사 SVG 이미지 렌더링 파일 생성
@@ -71,7 +90,7 @@ const startServer = async () => {
     await PdfService.initialize();
     console.log('Mock 이미지 생성 완료 및 정적 폴더 매핑 준비 완료.');
 
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`===============================================`);
       console.log(`  수능 국어 콘텐츠 적중 맵 (Node.js 백엔드)`);
       console.log(`  포트 ${PORT}번에서 성공적으로 구동되었습니다.`);
