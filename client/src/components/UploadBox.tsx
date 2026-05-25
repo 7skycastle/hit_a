@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { UploadCloud, FileText, CheckCircle2, AlertCircle } from 'lucide-react';
+import { UploadCloud, CheckCircle2, AlertCircle } from 'lucide-react';
 
 interface UploadBoxProps {
   onFileSelect: (file: File) => void;

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '../components/Layout';
-import { MatchSummaryCard } from '../components/MatchSummaryCard';
 import { Layers, FileText, Calendar, Plus, Award, ArrowRight } from 'lucide-react';
-import type { Report, ContentFile, ExamFile } from '../types';
 import { API_BASE_URL } from '../config';
 
 export const DashboardPage: React.FC = () => {

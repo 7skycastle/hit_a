@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import type { Highlight } from '../types';
 import { HighlightOverlay } from './HighlightOverlay';
 import { ZoomIn, ZoomOut, RotateCcw, Move } from 'lucide-react';

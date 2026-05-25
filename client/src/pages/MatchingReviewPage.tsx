@@ -4,12 +4,11 @@ import { Layout } from '../components/Layout';
 import { PdfImageViewer } from '../components/PdfImageViewer';
 import { ScoreBadge } from '../components/ScoreBadge';
 import type { Report, MatchCase, Highlight } from '../types';
-import { Save, Check, RefreshCw, Eye, EyeOff, LayoutGrid, CheckCircle2, ChevronRight, Type, Palette } from 'lucide-react';
+import { Save, Eye, EyeOff, LayoutGrid, CheckCircle2, Type, Palette } from 'lucide-react';
 import { API_BASE_URL } from '../config';
 
 export const MatchingReviewPage: React.FC = () => {
   const { reportId } = useParams<{ reportId: string }>();
-  const navigate = useNavigate();
 
   const [report, setReport] = useState<Report | null>(null);
   const [cases, setCases] = useState<MatchCase[]>([]);

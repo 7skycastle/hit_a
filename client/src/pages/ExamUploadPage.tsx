@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { UploadBox } from '../components/UploadBox';
-import { Cpu, AlertTriangle, Play, Loader2, Sparkles } from 'lucide-react';
+import { Cpu, AlertTriangle, Play, Sparkles } from 'lucide-react';
 import { API_BASE_URL } from '../config';
 
 export const ExamUploadPage: React.FC = () => {
