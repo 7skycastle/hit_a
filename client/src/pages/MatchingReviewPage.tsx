@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { PdfImageViewer } from '../components/PdfImageViewer';
 import { ScoreBadge } from '../components/ScoreBadge';
